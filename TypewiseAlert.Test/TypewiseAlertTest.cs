@@ -45,11 +45,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Cooling_Factory_Is_Registered()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var value = testAlert.RegisterCoolingTypeFactory();
+            var value = RegisterFactory.RegisterCoolingTypeFactory();
 
             // Assert
             Assert.True(value.GetType() == typeof(Factory<ICooling, CoolingType>));
@@ -58,11 +55,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Alert_Test_Factory_Is_Registered()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var value = testAlert.RegisterAlertTargetFactory();
+            var value = RegisterFactory.RegisterAlertTargetFactory();
 
             // Assert
             Assert.True(value.GetType() == typeof(Factory<IAlertTarget, AlertTarget>));
@@ -71,11 +65,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Passive_Cooling_Class_IsInvoked_If_Cooling_Type_Is_Passive()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var type = testAlert.GetCoolingClassTypeByCoolingType(CoolingType.PASSIVE_COOLING);
+            var type = RegisterFactory.GetCoolingClassTypeByCoolingType(CoolingType.PASSIVE_COOLING);
 
             // Assert
             Assert.True(type.GetType() == typeof(PassiveCooling));
@@ -84,11 +75,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Passive_Cooling_Class_IsInvoked_If_Cooling_Type_Is_HighActive()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var type = testAlert.GetCoolingClassTypeByCoolingType(CoolingType.HI_ACTIVE_COOLING);
+            var type = RegisterFactory.GetCoolingClassTypeByCoolingType(CoolingType.HI_ACTIVE_COOLING);
 
             // Assert
             Assert.True(type.GetType() == typeof(HighActiveCooling));
@@ -97,11 +85,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Passive_Cooling_Class_IsInvoked_If_Cooling_Type_Is_Medium_Active()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var type = testAlert.GetCoolingClassTypeByCoolingType(CoolingType.MED_ACTIVE_COOLING);
+            var type = RegisterFactory.GetCoolingClassTypeByCoolingType(CoolingType.MED_ACTIVE_COOLING);
 
             // Assert
             Assert.True(type.GetType() == typeof(MediumActiveCooling));
@@ -194,11 +179,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Alert_By_Controller_Class_is_Invoked_If_Type__Is_Alert_By_Controller()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var type = testAlert.GetAlertTargetClassByAlertTarget(AlertTarget.TO_CONTROLLER);
+            var type = RegisterFactory.GetAlertTargetClassByAlertTarget(AlertTarget.TO_CONTROLLER);
 
             // Assert
             Assert.True(type.GetType() == typeof(AlertByController));
@@ -207,11 +189,8 @@ namespace TypewiseAlert.Test
         [Fact]
         public void Test_If_Alert_By_email_Class_is_Invoked_If_Type__Is_Alert_By_Email()
         {
-            // Arrange
-            var testAlert = new TypewiseAlert();
-
             // Act
-            var type = testAlert.GetAlertTargetClassByAlertTarget(AlertTarget.TO_EMAIL);
+            var type = RegisterFactory.GetAlertTargetClassByAlertTarget(AlertTarget.TO_EMAIL);
 
             // Assert
             Assert.True(type.GetType() == typeof(AlertByMail));
